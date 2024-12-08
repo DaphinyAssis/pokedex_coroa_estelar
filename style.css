@@ -130,6 +130,13 @@ html {
 
 /* Quando a tela for menor que 480px, teremos 1 coluna */
 @media (max-width: 480px) {
+    html{
+        margin-top: 40%;
+    }
+    
+    .header{
+        top: 10%;
+    }
     .image-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 30px;
@@ -140,9 +147,9 @@ html {
     
         
     }
-    .image-item.clicked .check-icon {
-        opacity: 0; /* Torna o ícone visível */
-    }
+
+
+    
 }
 
 
