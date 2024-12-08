@@ -1,0 +1,232 @@
+@font-face {
+    font-family: star;
+    src: url(./fonts/Starborn.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+   
+}
+
+
+html {
+    scroll-behavior: smooth;
+    background-color: #1C1C31;
+    overflow-x: hidden;
+    width: 100%;
+    margin-top: 10%;
+}
+
+.header {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;  /* Faz com que o título fique em cima dos botões */
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+
+    z-index: 9999;
+    width: 100%;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.header-title{
+    margin-top: 10%;
+    font-family: star;
+    color: #FFD900;
+    font-size: 36px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+.header-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;/* Espaçamento vertical */
+    margin-top: 25px;
+    margin-bottom: 2%;
+  
+}
+
+.line-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-top: 5%;
+    margin-bottom: 2%;
+    margin-left: 60px;
+    margin-right: 60px;
+   
+}
+.line {
+    flex-grow: 1;
+    border-top: 1px solid #ffff;
+}
+.text {
+    white-space: nowrap;
+    padding: 0 10px;
+    color: #ffff;
+    font-family: Poppins;
+    font-size: 20px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5%;
+}
+
+.image-grid {
+    display: grid; 
+    grid-template-columns: repeat(6, minmax(0, 1fr));/* As colunas terão 200px, mas vão se ajustar para preencher a largura */
+    gap: 30px; /* Ajuste o espaço entre as imagens */
+    justify-content: center;
+   
+    
+}
+
+/* Quando a tela for menor que 1200px, teremos 4 colunas */
+@media (max-width: 2560px) {
+    .image-grid {
+        grid-template-columns: repeat(7, minmax(0, 1fr))
+    }
+}
+
+@media (max-width: 1623px) {
+    .image-grid {
+        grid-template-columns: repeat(6, minmax(0, 1fr))
+    }
+}
+@media (max-width: 1387px) {
+    .image-grid {
+        grid-template-columns: repeat(5, minmax(0, 1fr))
+    }
+}
+@media (max-width: 1151px) {
+    .image-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr))
+    }
+}
+
+/* Quando a tela for menor que 992px, teremos 3 colunas */
+@media (max-width: 992px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Quando a tela for menor que 768px, teremos 2 colunas */
+@media (max-width: 768px) {
+    .image-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Quando a tela for menor que 480px, teremos 1 coluna */
+@media (max-width: 480px) {
+    .image-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 30px;
+    }
+    .image-item img {
+        width: 110px;
+        height:110px;
+    
+        
+    }
+    .image-item.clicked .check-icon {
+        opacity: 0; /* Torna o ícone visível */
+    }
+}
+
+
+.image-item {
+    position: relative;
+    width: fit-content;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+}
+
+.image-item img {
+    max-width: 200px;
+    height: auto;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    display: block; /* Para garantir que a imagem ocupe todo o espaço da div */
+    margin: 0 auto;
+    
+}
+
+.image-item::after{
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.45); /* Escurecendo a imagem */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none; /* Impede que o clique seja capturado pelo pseudo-elemento */
+    z-index: 1; /* Garante que o escurecimento seja abaixo do ícone */
+    border-radius: 12px;
+}
+
+.check-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    max-width: 80px; /* Ajustando para 25px ou o valor que achar ideal */
+    max-height: 80px; /* Certificando que a altura também seja ajustada */
+    z-index: 2;
+}
+
+.image-item.clicked::after {
+    opacity: 1; /* Torna a camada escura visível */
+}
+
+.image-item.clicked .check-icon {
+    opacity: 1; /* Torna o ícone visível */
+}
+
+button{
+    position: absolute;
+    margin-left:80%;
+    background-color: #4949779c;
+border: none;
+    border-radius: 16px;
+    padding: 7px 30px;
+    color: #ffff;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+
+/* Estilos do ícone de voltar para o topo */
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;   /* Distância do fundo da tela */
+    right: 15px;    /* Distância da lateral direita da tela */
+    cursor: pointer;
+    z-index: 9999;  /* Garante que o ícone fique acima de outros elementos */
+}
+
+.scroll-to-top img {
+    width: 50px;     /* Ajuste o tamanho do ícone */
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.scroll-to-top img:hover {
+    transform: scale(1.1);  /* Efeito de aumento ao passar o mouse */
+}
