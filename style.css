@@ -35,7 +35,7 @@ html {
 }
 
 .header-title{
-    margin-top: 10%;
+    margin-top: 12%;
     font-family: star;
     color: #FFD900;
     font-size: 36px;
@@ -236,4 +236,58 @@ border: none;
 
 .scroll-to-top img:hover {
     transform: scale(1.1);  /* Efeito de aumento ao passar o mouse */
+}
+
+
+.footer {
+    display: flex;
+    justify-content: space-between; /* Posiciona os itens nas extremidades */
+    align-items: center; /* Alinha verticalmente ao centro */
+    padding: 20px 40px; /* Espaçamento interno */
+    background-color: #181820; /* Cor de fundo */
+    color: #fff; /* Cor do texto */
+    font-size: 14px;
+    font-family: Poppins, sans-serif;
+    width: 100%;
+    position: relative;
+    flex-wrap: wrap; /* Permite itens quebrarem linha se necessário */
+}
+
+.footer p {
+    margin: 0 auto; /* Centraliza o texto */
+    text-align: center; /* Garante que o texto fique alinhado no centro */
+    flex: 1; /* Ocupa espaço restante para centralização */
+}
+
+.github-link {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Garante que o ícone fique no canto esquerdo */
+}
+
+.github-icon {
+    width: 30px; /* Tamanho do ícone */
+    height: auto;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.github-icon:hover {
+    transform: scale(1.1); /* Efeito ao passar o mouse */
+}
+
+@media (max-width: 600px) {
+    .footer {
+        flex-direction: column; /* Empilha os itens em telas menores */
+        text-align: center;
+    }
+
+    .github-link {
+        margin-bottom: 10px; /* Adiciona espaço entre ícone e texto */
+    }
+
+    .footer p {
+        margin: 0;
+        text-align: center;
+    }
 }
