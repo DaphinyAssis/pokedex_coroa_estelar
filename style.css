@@ -126,6 +126,7 @@ html {
     .image-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+  
 }
 
 /* Quando a tela for menor que 480px, teremos 1 coluna */
@@ -290,4 +291,5 @@ border: none;
         margin: 0;
         text-align: center;
     }
+    
 }
